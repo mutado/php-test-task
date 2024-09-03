@@ -2,7 +2,7 @@
 
 namespace Operations\Notification\DTO;
 
-class NotificationData
+class NotificationDataDTO
 {
     public function __construct(
         public ?string $from = null,

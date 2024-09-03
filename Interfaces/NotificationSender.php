@@ -2,7 +2,7 @@
 
 namespace Operations\Notification\Interfaces;
 
-use Operations\Notification\DTO\NotificationData;
+use Operations\Notification\DTO\NotificationDataDTO;
 
 /**
  * NotificationSender interface
@@ -12,5 +12,5 @@ use Operations\Notification\DTO\NotificationData;
  */
 interface NotificationSender
 {
-    public function send(NotificationData $data): bool;
+    public function send(NotificationDataDTO $data): bool;
 }

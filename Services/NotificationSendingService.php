@@ -3,7 +3,7 @@
 namespace Operations\Notification\Services;
 
 use Operations\Notification\Contractor;
-use Operations\Notification\DTO\NotificationData;
+use Operations\Notification\DTO\NotificationDataDTO;
 use Operations\Notification\DTO\TemplateDataDTO;
 use Operations\Notification\NotificationEvents;
 use function Operations\Notification\getEmailsByPermit;
@@ -29,7 +29,7 @@ class NotificationSendingService
 
         $emailSender = $this->notificationFactory->createSender('email');
         foreach ($emails as $email) {
-            $emailSender->send(new NotificationData(
+            $emailSender->send(new NotificationDataDTO(
                 from: $emailFrom,
                 to: $email,
                 subject: __('complaintEmployeeEmailSubject', (array)$templateData, $resellerId),
@@ -56,7 +56,7 @@ class NotificationSendingService
 
         if (!empty($emailFrom) && !empty($client->email)) {
             $emailSender = $this->notificationFactory->createSender('email');
-            $emailSender->send(new NotificationData(
+            $emailSender->send(new NotificationDataDTO(
                 from: $emailFrom,
                 to: $client->email,
                 subject: __('complaintClientEmailSubject', (array)$templateData, $resellerId),
@@ -72,7 +72,7 @@ class NotificationSendingService
         if (!empty($client->mobile)) {
             $smsSender = $this->notificationFactory->createSender('sms');
             $errorText = '';
-            $smsResult = $smsSender->send(new NotificationData(
+            $smsResult = $smsSender->send(new NotificationDataDTO(
                 resellerId: $resellerId,
                 clientId: $client->id,
                 event: NotificationEvents::CHANGE_RETURN_STATUS,

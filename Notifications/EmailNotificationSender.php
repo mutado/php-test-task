@@ -2,7 +2,7 @@
 
 namespace Operations\Notification\Notifications;
 
-use Operations\Notification\DTO\NotificationData;
+use Operations\Notification\DTO\NotificationDataDTO;
 use Operations\Notification\Interfaces\NotificationSender;
 use Operations\Notification\MessagesClient;
 
@@ -16,7 +16,7 @@ class EmailNotificationSender implements NotificationSender
 {
     public const MESSAGE_TYPE_EMAIL = 0; // Using a class constant
 
-    public function send(NotificationData $data): bool
+    public function send(NotificationDataDTO $data): bool
     {
         return MessagesClient::sendMessage([
             self::MESSAGE_TYPE_EMAIL => [

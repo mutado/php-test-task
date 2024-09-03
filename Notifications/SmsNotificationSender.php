@@ -2,7 +2,7 @@
 
 namespace Operations\Notification\Notifications;
 
-use Operations\Notification\DTO\NotificationData;
+use Operations\Notification\DTO\NotificationDataDTO;
 use Operations\Notification\Interfaces\NotificationSender;
 use Operations\Notification\NotificationManager;
 
@@ -14,7 +14,7 @@ use Operations\Notification\NotificationManager;
  */
 class SmsNotificationSender implements NotificationSender
 {
-    public function send(NotificationData $data): bool
+    public function send(NotificationDataDTO $data): bool
     {
         if (!$data->resellerId) {
             $data->errorText = 'Reseller ID is required';
